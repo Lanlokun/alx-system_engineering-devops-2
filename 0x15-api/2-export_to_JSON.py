@@ -10,9 +10,9 @@ from sys import argv
 if __name__ == '__main__':
     uid = argv[1]
     url = "https://jsonplaceholder.typicode.com/users/{}".format(uid)
-    user = requests.get(url, verify=False).json()
+    user = requests.get(url, verify=True).json()
     url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(uid)
-    todo = requests.get(url, verify=False).json()
+    todo = requests.get(url, verify=True).json()
     name = user.get('username')
     t = [{"task": t.get("title"),
           "username": name,
