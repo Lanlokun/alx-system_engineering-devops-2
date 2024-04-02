@@ -7,7 +7,7 @@ import requests
 
 if __name__ == '__main__':
     url = "https://jsonplaceholder.typicode.com/users"
-    us = requests.get(url, verify=False).json()
+    us = requests.get(url, verify=False, timeout=60).json()
     undoc = {}
     udoc = {}
     for user in us:
@@ -15,7 +15,7 @@ if __name__ == '__main__':
         udoc[uid] = []
         undoc[uid] = user.get("username")
     url = "https://jsonplaceholder.typicode.com/todos"
-    todo = requests.get(url, verify=False).json()
+    todo = requests.get(url, verify=False, timeout=60).json()
     [udoc.get(t.get("userId")).append({"task": t.get("title"),
                                        "completed": t.get("completed"),
                                        "username": undoc.get(
